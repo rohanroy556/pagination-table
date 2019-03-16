@@ -1,0 +1,81 @@
+.table-pagination-container {
+	.table-container {
+		height: 560px;
+		width: 100%;
+		overflow: auto;
+		.table-resizable {
+			border-collapse: collapse;
+			width: 100%;
+			th:first-of-type {
+				width: 20px;
+			}
+			th, td {
+				border: 1px solid #ddd;
+				padding: 8px;
+				// max-width: 0;
+				// overflow: hidden;
+				// text-overflow: ellipsis;
+				// white-space: nowrap;
+			}
+			th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #4CAF50;
+				color: white;
+				position: relative;
+				user-select: none;
+				&::before {
+					cursor: col-resize;
+					user-select: none;
+					content: '';
+					display: block;
+					height: 100%;
+					position: absolute;
+					right: 0;
+					top: 0;
+					width: 10px;
+				}
+				&:first-of-type::before {
+					display: none;
+				}
+				&:last-of-type::before {
+					display: none;
+				}
+			}
+			td {
+				max-width: 0px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+		.resizing {
+			cursor: col-resize;
+		}
+	}
+	.page-container {
+		display: block;
+		padding: 10px;
+		font-size: 18px;
+		button {
+			font-size: 18px;
+			margin: 0px 5px;
+			width: 30px;
+			height: 30px;
+		}
+		input {
+			font-size: 14px;
+			width: 40px;
+			height: 25px;
+			margin: 0px 5px;
+			text-align: right;
+		}
+		select {
+			width: 50px;
+			height: 30px;
+			margin: 0px 5px;
+			text-align: right;
+		}
+	}
+}
