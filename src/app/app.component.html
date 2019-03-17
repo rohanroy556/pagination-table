@@ -3,13 +3,19 @@
         <table class="table table-striped table-bordered table-resizable">
             <thead>
                 <tr>
-                    <th><input type="checkbox" (change)="selectAllRows()"></th>
+                    <th class="checkbox">
+                        <input type="checkbox" (change)="selectAllRows()">
+                        <span class="checkmark"></span>
+                    </th>
                     <th *ngFor="let header of headers">{{header.title}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let row of content" id="{{row['id']}}">
-                    <td><input type="checkbox" value="{{row['id']}}" (change)="selectRow()"></td>
+                    <td class="checkbox">
+                        <input type="checkbox" value="{{row['id']}}" (change)="selectRow()">
+                        <span class="checkmark"></span>
+                    </td>
                     <td *ngFor="let header of headers">{{row[header.field]}}</td>
                 </tr>
             </tbody>

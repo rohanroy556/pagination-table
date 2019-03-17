@@ -6,16 +6,59 @@
 		.table-resizable {
 			border-collapse: collapse;
 			width: 100%;
-			th:first-of-type {
-				width: 20px;
+			.checkbox {
+				position: relative;
+				padding: 10px 15px;
+				width: 2%;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;	
+				input {
+					position: absolute;
+					opacity: 0;
+					top: 5px;
+					left: 0px;
+					cursor: pointer;
+					height: 25px;
+					width: 25px;
+					z-index: 15;
+				}
+				.checkmark {
+					position: absolute;
+					top: 13px;
+					left: 8px;
+					height: 15px;
+					width: 15px;
+					background: transparent;
+				}
+				.checkmark::after {
+					content: '';
+					position: absolute;
+					display: block;
+					left: 4px;
+					top: 0px;
+					width: 4px;
+					height: 8px;
+					border: solid #aaa;
+					border-width: 0 3px 3px 0;
+					-webkit-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+				&:hover .checkmark::after {
+					border: solid #777;
+					border-width: 0 3px 3px 0;
+				}
+				input:checked ~ .checkmark::after {
+					border: solid #00F;
+					border-width: 0 3px 3px 0;
+				}		  
 			}
 			th, td {
 				border: 1px solid #ddd;
 				padding: 8px;
-				// max-width: 0;
-				// overflow: hidden;
-				// text-overflow: ellipsis;
-				// white-space: nowrap;
 			}
 			th {
 				padding-top: 12px;
@@ -28,6 +71,9 @@
 				&::before {
 					cursor: col-resize;
 					user-select: none;
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
 					content: '';
 					display: block;
 					height: 100%;

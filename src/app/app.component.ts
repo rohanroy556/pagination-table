@@ -467,7 +467,7 @@ export class AppComponent implements OnInit{
   @HostListener('dblclick', ['$event']) onDoubleClick() {
     var tableTh = document.querySelectorAll('table th');
     for (let i = 1; i < tableTh.length; i++)
-      tableTh[i]['style']['width'] = 100 / this.headers.length + '%';
+      tableTh[i]['style']['width'] = 98 / this.headers.length + '%';
   }
 
   @HostListener('mousemove', ['$event']) onMouseMove(event) {
@@ -481,7 +481,8 @@ export class AppComponent implements OnInit{
 
   @HostListener('mouseup', ['$event']) onMouseUp(event) {
     this.pressed = false;
-    this.handle.classList.remove('resizing');
+    if (this.handle != undefined)
+      this.handle.classList.remove('resizing');
   }
 
   changePageByButton(event) {
@@ -512,17 +513,10 @@ export class AppComponent implements OnInit{
   }
 
   selectAllRows() {
+    var checkAll =  document.querySelector('th input[type=checkbox]');
     var checkboxes = document.querySelectorAll('td input[type=checkbox]');
-    let i, c = 0;
-    for (i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i]['checked'])
-        c++;
-      checkboxes[i]['checked'] = true;
-    }
-    if (c == checkboxes.length) {
-      for (i = 0; i < checkboxes.length; i++)
-        checkboxes[i]['checked'] = false;
-    }
+    for (let i = 0; i < checkboxes.length; i++)
+      checkboxes[i]['checked'] = checkAll['checked'];
     this.selectRow();
   }
 
